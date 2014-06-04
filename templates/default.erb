@@ -1,7 +1,7 @@
 <% if @env_vars -%>
 # Export misc shell environment variables
 <% @env_vars.each do |var, val| -%>
-export <%= var.upcase %>='<%= val %>'
+export <%= var.upcase %>="<%= val %>"
 <% end -%>
 <% end -%>
 
