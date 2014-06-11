@@ -5,6 +5,7 @@ class hubot::config (
   $user,
   $group,
   $install_dir,
+  $logfile    = '/var/log/hubot.log',
 ) {
   file { '/etc/default/hubot':
     ensure  => 'present',
@@ -16,5 +17,13 @@ class hubot::config (
     ensure  => 'present',
     content => template('hubot/hubot.init.erb'),
     mode    => '0755',
+  }
+
+  file { $logfile:
+    ensure   => 'present',
+    owner    => $user,
+    mode     => '0755',
+    checksum => 'none',
+    backup   => false
   }
 }
